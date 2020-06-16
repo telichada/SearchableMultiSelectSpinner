@@ -1,6 +1,6 @@
-###Android Searchable Multi Select Spinner
->
-Searchable Multi Select Spinner dialog for android. It takes complex model objects list instead of just string list to make select-able dialog. It reduces the task of creating multi select spinner manually.<
+### Android Searchable Multi Select Spinner
+
+>Searchable Multi Select Spinner dialog for android. It takes complex model objects list instead of just string list to make select-able dialog. It reduces the task of creating multi select spinner manually.
 
 
 #### Add following dependencies in project label build.gradle
