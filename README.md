@@ -27,14 +27,19 @@
         }
 ```
 #### How to call
-```
-        
-            SearchableMultiSelectSpinner.show(this, "Select Items","Done", items, object :
-                SelectionCompleteListener {
-                override fun onCompleteSelection(selectedItems: ArrayList<SearchableItem>) {
-                    Log.e("data", selectedItems.toString())
-                }
+```   
+    //SearchableMultiSelectSpinner.show() method params:
+    1.context
+    2.Dialog title
+    3.dialog's positive button text
+    4.Searchable Item array list
+    5.A listener(SelectionCompleteListener) by which selected item will be listened
+    
+    SearchableMultiSelectSpinner.show(this, "Select Items","Done", items, object :
+	SelectionCompleteListener {
+	override fun onCompleteSelection(selectedItems: ArrayList<SearchableItem>) {
+	    Log.e("data", selectedItems.toString())
+	}
 
-            })
-        
+    })
 ```
