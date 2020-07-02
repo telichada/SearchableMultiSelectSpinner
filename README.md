@@ -27,6 +27,12 @@
             items.add(SearchableItem("Item $i", "$i"))
         }
 ```
+#### Pre select some item.
+> If you want to pre select some items then do like below-
+```
+items[yourIndex].isSelected=true
+
+```
 #### How to call
 ```   
     //SearchableMultiSelectSpinner.show() method params:
