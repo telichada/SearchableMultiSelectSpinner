@@ -6,21 +6,21 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 
-class SearchableMultiSelectSpinner {
+class SearchableSingleSelectSpinner {
     companion object {
         fun show(
             context: Context,
             title: String,
-            doneButtonText:String,
             searchableItems: MutableList<SearchableItem>,
-            selectionCompleteListener: SelectionCompleteListener
+            selectionCompleteListener: SingleSelectionCompleteListener
         ) {
-            val alertDialog = AlertDialog.Builder(context)
+            val alertDialogBuilder = AlertDialog.Builder(context)
             val inflater = LayoutInflater.from(context)
             val convertView = inflater.inflate(R.layout.searchable_list_layout, null)
 
-            alertDialog.setView(convertView)
-            alertDialog.setTitle(title)
+            alertDialogBuilder.setView(convertView)
+            alertDialogBuilder.setTitle(title)
+            val dialog=alertDialogBuilder.create()
 
             val searchView = convertView.findViewById<SearchView>(R.id.searchView)
             val recyclerView =
@@ -39,13 +39,13 @@ class SearchableMultiSelectSpinner {
                         ) {
                             for (i in searchableItems.indices) {
                                 if (searchableItems[i].code == item.code) {
-                                    searchableItems[i].isSelected = b
-                                    break
+                                    selectionCompleteListener.onCompleteSelection(searchableItems[i])
+                                    dialog.dismiss()
                                 }
                             }
                         }
 
-                    },false)
+                    },true)
             recyclerView.itemAnimator = null
             recyclerView.layoutManager = mLayoutManager
             recyclerView.adapter = adapter
@@ -62,20 +62,7 @@ class SearchableMultiSelectSpinner {
                     return false
                 }
             })
-
-            alertDialog.setPositiveButton(doneButtonText) { dialogInterface, i ->
-                dialogInterface.dismiss()
-                val resultList=ArrayList<SearchableItem>()
-                for (index in searchableItems.indices) {
-                    if (searchableItems[index].isSelected) {
-                        resultList.add(searchableItems[index])
-                    }
-                }
-
-                selectionCompleteListener.onCompleteSelection(resultList)
-            }
-
-            alertDialog.show()
+            dialog.show()
         }
     }
 

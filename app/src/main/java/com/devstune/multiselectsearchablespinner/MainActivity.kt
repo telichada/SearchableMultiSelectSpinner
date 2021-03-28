@@ -3,9 +3,7 @@ package com.devstune.multiselectsearchablespinner
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.devstune.searchablemultiselectspinner.SearchableMultiSelectSpinner
-import com.devstune.searchablemultiselectspinner.SearchableItem
-import com.devstune.searchablemultiselectspinner.SelectionCompleteListener
+import com.devstune.searchablemultiselectspinner.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -21,6 +19,15 @@ class MainActivity : AppCompatActivity() {
                 SelectionCompleteListener {
                 override fun onCompleteSelection(selectedItems: ArrayList<SearchableItem>) {
                     Log.e("data", selectedItems.toString())
+                }
+
+            })
+        }
+        buttonSingle.setOnClickListener {
+            SearchableSingleSelectSpinner.show(this, "Select Item", items, object :
+                SingleSelectionCompleteListener {
+                override fun onCompleteSelection(selectedItem: SearchableItem) {
+                    Log.e("data", selectedItem.toString())
                 }
 
             })

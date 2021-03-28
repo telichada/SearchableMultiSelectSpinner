@@ -14,7 +14,8 @@ class SearchableAdapter(
     internal var context: Context,
     private val mValues: List<SearchableItem>,
     private var filteredList: List<SearchableItem>,
-    clickListener: ItemClickListener
+    clickListener: ItemClickListener,
+    var singleSelection:Boolean=false
 ) : Filterable, RecyclerView.Adapter<SearchableAdapter.ViewHolder>() {
     private var itemClickListener: ItemClickListener = clickListener
 
@@ -40,7 +41,11 @@ class SearchableAdapter(
         holder.checkBox.setOnCheckedChangeListener(null)
         holder.titleTextView.text = holder.mItem!!.text
         holder.checkBox.isChecked = holder.mItem!!.isSelected
-
+        if(singleSelection){
+            holder.checkBox.visibility=View.GONE
+        }else{
+            holder.checkBox.visibility=View.VISIBLE
+        }
         var productPosition = 0
         for (i in mValues.indices) {
             if (mValues[i].code.equals(holder.mItem!!.code)) {
