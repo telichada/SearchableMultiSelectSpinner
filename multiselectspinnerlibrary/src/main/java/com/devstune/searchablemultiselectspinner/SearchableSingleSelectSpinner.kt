@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
-
 class SearchableSingleSelectSpinner {
     companion object {
         fun show(
