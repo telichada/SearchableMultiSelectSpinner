@@ -17,7 +17,7 @@
 #### Add following dependencies in app label build.gradle
 ```
 	dependencies {
-	        implementation 'com.github.telichada:SearchableMultiSelectSpinner:1.0'
+	        implementation 'com.github.telichada:SearchableMultiSelectSpinner:2.0'
 	}
 ```
 
@@ -49,4 +49,12 @@ items[yourIndex].isSelected=true
 	}
 
     })
+    //for single selection use 2.0 version of this library
+    SearchableSingleSelectSpinner.show(this, "Select Item", items, object :
+        SingleSelectionCompleteListener {
+        override fun onCompleteSelection(selectedItem: SearchableItem) {
+             Log.e("data", selectedItem.toString())
+        }
+
+     })
 ```
