@@ -17,7 +17,7 @@
 #### Add following dependencies in app label build.gradle
 ```
 	dependencies {
-	        implementation 'com.github.telichada:SearchableMultiSelectSpinner:1.0'
+	        implementation 'com.github.telichada:SearchableMultiSelectSpinner:2.0'
 	}
 ```
 
